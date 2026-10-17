@@ -1,10 +1,11 @@
+﻿using DominoPontaDeQuina.Repository.Interfaces;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class ParticipacaoPartidaRepository
+public class ParticipacaoPartidaRepository : IParticipacaoPartidaRepository
 {
     private readonly DominoDbContext _db;
     public ParticipacaoPartidaRepository(DominoDbContext db) => _db = db;
@@ -37,3 +38,4 @@ public class ParticipacaoPartidaRepository
         _db.ParticipacoesPartida.Where(x => x.JogadorId == jogadorId && x.Vencedor)
             .ToListAsync();
 }
+

@@ -1,10 +1,11 @@
+﻿using DominoPontaDeQuina.Repository.Interfaces;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class PartidaRepository
+public class PartidaRepository : IPartidaRepository
 {
     private readonly DominoDbContext _db;
     public PartidaRepository(DominoDbContext db) => _db = db;
@@ -33,3 +34,4 @@ public class PartidaRepository
     public Task<List<Partida>> BuscarPorStatusAsync(StatusJogo status) =>
         _db.Partidas.Where(x => x.Status == status).ToListAsync();
 }
+

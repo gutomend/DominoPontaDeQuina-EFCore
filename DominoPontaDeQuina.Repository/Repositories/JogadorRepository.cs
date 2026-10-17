@@ -1,10 +1,11 @@
+﻿using DominoPontaDeQuina.Repository.Interfaces;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class JogadorRepository
+public class JogadorRepository : IJogadorRepository
 {
     private readonly DominoDbContext _db;
     public JogadorRepository(DominoDbContext db) => _db = db;
@@ -35,3 +36,4 @@ public class JogadorRepository
     public Task<List<Jogador>> PesquisarPorNomeAsync(string termo) =>
         _db.Jogadores.Where(x => x.NomeExibicao.Contains(termo)).ToListAsync();
 }
+
