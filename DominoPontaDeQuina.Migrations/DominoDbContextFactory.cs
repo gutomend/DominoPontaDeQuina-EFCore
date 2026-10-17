@@ -13,8 +13,11 @@ public class DominoDbContextFactory
             new DbContextOptionsBuilder<DominoDbContext>();
 
         optionsBuilder.UseSqlite(
-            "Data Source=domino.db");
-
+     "Data Source=domino.db",
+     sqlite => sqlite.MigrationsAssembly(
+         "DominoPontaDeQuina.Migrations"
+     )
+ );
         return new DominoDbContext(
             optionsBuilder.Options);
     }
